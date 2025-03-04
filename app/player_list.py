@@ -1,9 +1,17 @@
 from player_node import PlayerNode
 
-
 class PlayerList:
     def __init__(self):
         self.__head = None
+        self.__tail = None
+
+    @property
+    def head(self):
+        return self.__head
+
+    @property
+    def tail(self):
+        return self.__tail
 
     def __len__(self):
         count = 0
@@ -18,6 +26,7 @@ class PlayerList:
         if self.is_empty:
             new_player = PlayerNode(player)
             self.__head = new_player
+            self.__tail = new_player
         else:
             new_player = PlayerNode(player)
             new_player.next = self.__head

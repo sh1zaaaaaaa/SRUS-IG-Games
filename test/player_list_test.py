@@ -21,6 +21,7 @@ class PlayerListTest(unittest.TestCase):
         player1 = Player(2, "Another Name")
         pl.push(player1)
         self.assertEqual(len(pl),2)
+        self.assertNotEqual(pl.head, pl.tail)
 
 if __name__ == '__main__':
     unittest.main()
