@@ -42,6 +42,42 @@ class PlayerListTest(unittest.TestCase):
         self.assertEqual(len(pl), 2)
         self.assertNotEqual(pl.head, pl.tail)
 
+    def test_delete_from_empty_list(self):
+        pl = PlayerList()
+        self.assertEqual(True, pl.is_empty)
+        with self.assertRaises(IndexError):
+            pl.delete_tail()
+            pl.delete_head()
+
+    def test_delete_head_from_not_empty_list(self):
+        pl = PlayerList()
+        player = Player(1, "Test Name")
+        player1 = Player(2, "Another Name")
+        pl.push(player)
+        pl.push(player1)
+        self.assertEqual(False, pl.is_empty)
+        self.assertEqual(len(pl), 2)
+        pl.delete_head()
+        self.assertEqual(len(pl), 1)
+
+    def test_delete_tail_from_not_empty_list(self):
+        pl = PlayerList()
+        player = Player(1, "Test Name")
+        player1 = Player(2, "Another Name")
+        pl.push(player)
+        pl.push(player1)
+        self.assertEqual(False, pl.is_empty)
+        self.assertEqual(len(pl), 2)
+        pl.delete_tail()
+        self.assertEqual(len(pl), 1)
+
+    def test_delete_from_single_element_list(self):
+        pl = PlayerList()
+        player = Player(1, "Test Name")
+        pl.push(player)
+        self.assertEqual(False, pl.is_empty)
+        pl.delete_head()
+        self.assertEqual(len(pl), 0)
 
 if __name__ == '__main__':
     unittest.main()
