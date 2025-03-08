@@ -95,3 +95,20 @@ class PlayerList:
             current = current.next
 
         raise IndexError(f"There is no Player with key {key}.")
+
+    def display(self, forward=True):
+        if self.is_empty:
+            raise IndexError("Nothing to display.")
+
+        if forward:
+            current = self.head
+
+            while current:
+                print(current)
+                current = current.next
+        else:
+            current = self.tail
+
+            while current:
+                print(current)
+                current = current.prev

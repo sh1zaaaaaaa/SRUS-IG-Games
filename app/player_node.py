@@ -29,4 +29,4 @@ class PlayerNode:
         return self.__player.uid
 
     def __str__(self):
-        return f'Player Node {self.key} with Name {self.__player.name}'
+        return f'Player Node: {self.key}, with Name: {self.__player.name}'
