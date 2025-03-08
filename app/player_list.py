@@ -73,3 +73,25 @@ class PlayerList:
         else:
             self.__head = self.head.next
             self.__head.prev = None
+
+    def delete(self, key):
+        if self.is_empty:
+            raise IndexError("Cannot delete from empty list.")
+
+        key = str(key)
+
+        current = self.head
+
+        while current:
+            if current.key == key:
+                if current == self.head:
+                    self.delete_head()
+                elif current == self.tail:
+                    self.delete_tail()
+                else:
+                    current.prev.next = current.next
+                    current.next.prev = current.prev
+                return
+            current = current.next
+
+        raise IndexError(f"There is no Player with key {key}.")
